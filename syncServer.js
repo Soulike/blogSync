@@ -6,6 +6,7 @@ const router = require('./router/router');
 
 const git = require('./functions/git');
 const asyncFunctions = require('./functions/asyncFunctions');
+const {log} = require('./functions/log');
 
 const helmet = require('koa-helmet');
 app.use(helmet());
