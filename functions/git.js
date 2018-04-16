@@ -39,5 +39,6 @@ async function update(syncPage)
 
 module.exports = {
     clone,
-    update
+    update,
+    PATH
 };

@@ -20,7 +20,7 @@ app.use(async (ctx, next) =>
     }
     else
     {
-        await asyncFunctions.accessAsync(`../${syncPage}`)
+        await asyncFunctions.accessAsync(`${git.PATH}/${syncPage}`)
             .then(async () =>
             {
                 await update(syncPage);
