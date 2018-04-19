@@ -2,7 +2,7 @@
 const asyncFunctions = require('./asyncFunctions');
 const {log} = require('./log');
 
-const PATH = '~/blog/source';
+const PATH = '/home/soulike/blog/source';
 
 async function clone(syncPage)
 {
