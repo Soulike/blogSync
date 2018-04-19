@@ -1,4 +1,5 @@
 'use strict';
+const fs = require('fs');
 const asyncFunctions = require('./asyncFunctions');
 const {log} = require('./log');
 
@@ -23,6 +24,14 @@ async function clone(syncPage)
 async function update(syncPage)
 {
     log(`${syncPage} update detected, start pulling and compiling`);
+    await asyncFunctions.accessAsync(`${PATH}/${syncPage}/`, fs.constants.X_OK)//查看这个文件能否执行，如果不能，修改权限
+        .catch(async (err) =>
+        {
+            if (err)
+            {
+                await asyncFunctions.execAsync(`chmod 744 sync.sh`, {cwd: `${PATH}/${syncPage}/`});
+            }
+        });
     log(`./sync.sh`);
     await asyncFunctions.execAsync(`./sync.sh`, {cwd: `${PATH}/${syncPage}/`})
         .then(stdout =>
